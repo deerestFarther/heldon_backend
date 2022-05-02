@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heldon.dao.Network">
+    <resultMap id="BaseMap" type="com.heldon.entity.Network">
+        <id column="net_id" property="netId" jdbcType="INTEGER"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="net_name" property="netName" jdbcType="VARCHAR"/>
+        <result column="comment_count" property="commentCount" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="is_delete" property="isDelete" jdbcType="BIT"/>
+        <result column="ext1" property="ext1" jdbcType="INTEGER"/>
+        <result column="ext2" property="ext2" jdbcType="INTEGER"/>
+        <result column="ext3" property="ext3" jdbcType="VARCHAR"/>
+        <result column="ext4" property="ext4" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="BaseColumns">
+      a.net_id, a.user_id, a.net_name, a.comment_count, a.create_time, a.is_delete, a.ext1, 
+      a.ext2, a.ext3, a.ext4
+    </sql>
+    <insert id="insert" parameterType="com.heldon.entity.Network">
+        insert into network
+          (net_id, user_id, net_name, comment_count, create_time, is_delete, ext1, ext2, ext3, 
+          ext4)
+        values
+          (#{netId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{netName,jdbcType=VARCHAR}, 
+          #{commentCount,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=BIT}, 
+          #{ext1,jdbcType=INTEGER}, #{ext2,jdbcType=INTEGER}, #{ext3,jdbcType=VARCHAR}, #{ext4,jdbcType=VARCHAR}
+          )
+    </insert>
+    <insert id="insertSelective" parameterType="com.heldon.entity.Network">
+        insert into network
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="netId != null">
+                net_id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="netName != null">
+                net_name,
+            </if>
+            <if test="commentCount != null">
+                comment_count,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="isDelete != null">
+                is_delete,
+            </if>
+            <if test="ext1 != null">
+                ext1,
+            </if>
+            <if test="ext2 != null">
+                ext2,
+            </if>
+            <if test="ext3 != null">
+                ext3,
+            </if>
+            <if test="ext4 != null">
+                ext4,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="netId != null">
+                #{netId,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="netName != null">
+                #{netName,jdbcType=VARCHAR},
+            </if>
+            <if test="commentCount != null">
+                #{commentCount,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isDelete != null">
+                #{isDelete,jdbcType=BIT},
+            </if>
+            <if test="ext1 != null">
+                #{ext1,jdbcType=INTEGER},
+            </if>
+            <if test="ext2 != null">
+                #{ext2,jdbcType=INTEGER},
+            </if>
+            <if test="ext3 != null">
+                #{ext3,jdbcType=VARCHAR},
+            </if>
+            <if test="ext4 != null">
+                #{ext4,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="update" parameterType="com.heldon.entity.Network">
+        update network
+        set
+            net_id = #{netId,jdbcType=INTEGER},
+            user_id = #{userId,jdbcType=INTEGER},
+            net_name = #{netName,jdbcType=VARCHAR},
+            comment_count = #{commentCount,jdbcType=INTEGER},
+            create_time = #{createTime,jdbcType=TIMESTAMP},
+            is_delete = #{isDelete,jdbcType=BIT},
+            ext1 = #{ext1,jdbcType=INTEGER},
+            ext2 = #{ext2,jdbcType=INTEGER},
+            ext3 = #{ext3,jdbcType=VARCHAR},
+            ext4 = #{ext4,jdbcType=VARCHAR}
+        where net_id = #{netId,jdbcType=INTEGER}
+    </update>
+    <update id="updateSelective" parameterType="com.heldon.entity.Network">
+        update network
+        <set>
+            <if test="netId != null">
+                net_id = #{netId,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="netName != null">
+                net_name = #{netName,jdbcType=VARCHAR},
+            </if>
+            <if test="commentCount != null">
+                comment_count = #{commentCount,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete,jdbcType=BIT},
+            </if>
+            <if test="ext1 != null">
+                ext1 = #{ext1,jdbcType=INTEGER},
+            </if>
+            <if test="ext2 != null">
+                ext2 = #{ext2,jdbcType=INTEGER},
+            </if>
+            <if test="ext3 != null">
+                ext3 = #{ext3,jdbcType=VARCHAR},
+            </if>
+            <if test="ext4 != null">
+                ext4 = #{ext4,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where net_id = #{netId,jdbcType=INTEGER}
+    </update>
+    <select id="queryOne" resultMap="BaseMap" parameterType="Integer">
+        select
+        <include refid="BaseColumns"/>
+        from network a
+        where a.net_id = #{netId,jdbcType=INTEGER}
+    </select>
+    <delete id="delete" parameterType="Integer">
+        delete from network where net_id = #{netId,jdbcType=INTEGER}
+    </delete>
+</mapper>

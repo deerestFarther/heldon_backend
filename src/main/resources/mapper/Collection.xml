@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heldon.dao.Collection">
+    <resultMap id="BaseMap" type="com.heldon.entity.Collection">
+        <id column="collection_id" property="collectionId" jdbcType="INTEGER"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="collection_type" property="collectionType" jdbcType="INTEGER"/>
+        <result column="collection_name" property="collectionName" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="comment_count" property="commentCount" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="is_delete" property="isDelete" jdbcType="BIT"/>
+        <result column="ext1" property="ext1" jdbcType="INTEGER"/>
+        <result column="ext2" property="ext2" jdbcType="INTEGER"/>
+        <result column="ext3" property="ext3" jdbcType="VARCHAR"/>
+        <result column="ext4" property="ext4" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="BaseColumns">
+      a.collection_id, a.user_id, a.collection_type, a.collection_name, a.content, a.comment_count, 
+      a.create_time, a.is_delete, a.ext1, a.ext2, a.ext3, a.ext4
+    </sql>
+    <insert id="insert" parameterType="com.heldon.entity.Collection">
+        insert into collection
+          (collection_id, user_id, collection_type, collection_name, content, comment_count, 
+          create_time, is_delete, ext1, ext2, ext3, ext4)
+        values
+          (#{collectionId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{collectionType,jdbcType=INTEGER}, 
+          #{collectionName,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{commentCount,jdbcType=INTEGER}, 
+          #{createTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=BIT}, #{ext1,jdbcType=INTEGER}, 
+          #{ext2,jdbcType=INTEGER}, #{ext3,jdbcType=VARCHAR}, #{ext4,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.heldon.entity.Collection">
+        insert into collection
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="collectionId != null">
+                collection_id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="collectionType != null">
+                collection_type,
+            </if>
+            <if test="collectionName != null">
+                collection_name,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="commentCount != null">
+                comment_count,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="isDelete != null">
+                is_delete,
+            </if>
+            <if test="ext1 != null">
+                ext1,
+            </if>
+            <if test="ext2 != null">
+                ext2,
+            </if>
+            <if test="ext3 != null">
+                ext3,
+            </if>
+            <if test="ext4 != null">
+                ext4,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="collectionId != null">
+                #{collectionId,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="collectionType != null">
+                #{collectionType,jdbcType=INTEGER},
+            </if>
+            <if test="collectionName != null">
+                #{collectionName,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="commentCount != null">
+                #{commentCount,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isDelete != null">
+                #{isDelete,jdbcType=BIT},
+            </if>
+            <if test="ext1 != null">
+                #{ext1,jdbcType=INTEGER},
+            </if>
+            <if test="ext2 != null">
+                #{ext2,jdbcType=INTEGER},
+            </if>
+            <if test="ext3 != null">
+                #{ext3,jdbcType=VARCHAR},
+            </if>
+            <if test="ext4 != null">
+                #{ext4,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="update" parameterType="com.heldon.entity.Collection">
+        update collection
+        set
+            collection_id = #{collectionId,jdbcType=INTEGER},
+            user_id = #{userId,jdbcType=INTEGER},
+            collection_type = #{collectionType,jdbcType=INTEGER},
+            collection_name = #{collectionName,jdbcType=VARCHAR},
+            content = #{content,jdbcType=VARCHAR},
+            comment_count = #{commentCount,jdbcType=INTEGER},
+            create_time = #{createTime,jdbcType=TIMESTAMP},
+            is_delete = #{isDelete,jdbcType=BIT},
+            ext1 = #{ext1,jdbcType=INTEGER},
+            ext2 = #{ext2,jdbcType=INTEGER},
+            ext3 = #{ext3,jdbcType=VARCHAR},
+            ext4 = #{ext4,jdbcType=VARCHAR}
+        where collection_id = #{collectionId,jdbcType=INTEGER}
+    </update>
+    <update id="updateSelective" parameterType="com.heldon.entity.Collection">
+        update collection
+        <set>
+            <if test="collectionId != null">
+                collection_id = #{collectionId,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="collectionType != null">
+                collection_type = #{collectionType,jdbcType=INTEGER},
+            </if>
+            <if test="collectionName != null">
+                collection_name = #{collectionName,jdbcType=VARCHAR},
+            </if>
+            <if test="content != null">
+                content = #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="commentCount != null">
+                comment_count = #{commentCount,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete,jdbcType=BIT},
+            </if>
+            <if test="ext1 != null">
+                ext1 = #{ext1,jdbcType=INTEGER},
+            </if>
+            <if test="ext2 != null">
+                ext2 = #{ext2,jdbcType=INTEGER},
+            </if>
+            <if test="ext3 != null">
+                ext3 = #{ext3,jdbcType=VARCHAR},
+            </if>
+            <if test="ext4 != null">
+                ext4 = #{ext4,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where collection_id = #{collectionId,jdbcType=INTEGER}
+    </update>
+    <select id="queryOne" resultMap="BaseMap" parameterType="Integer">
+        select
+        <include refid="BaseColumns"/>
+        from collection a
+        where a.collection_id = #{collectionId,jdbcType=INTEGER}
+    </select>
+    <delete id="delete" parameterType="Integer">
+        delete from collection where collection_id = #{collectionId,jdbcType=INTEGER}
+    </delete>
+</mapper>

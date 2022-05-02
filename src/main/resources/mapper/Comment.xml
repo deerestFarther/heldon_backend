@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heldon.dao.Comment">
+    <resultMap id="BaseMap" type="com.heldon.entity.Comment">
+        <id column="comment_id" property="commentId" jdbcType="INTEGER"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="entity_type" property="entityType" jdbcType="INTEGER"/>
+        <result column="entity_id" property="entityId" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="is_delete" property="isDelete" jdbcType="BIT"/>
+        <result column="ext1" property="ext1" jdbcType="INTEGER"/>
+        <result column="ext2" property="ext2" jdbcType="INTEGER"/>
+        <result column="ext3" property="ext3" jdbcType="VARCHAR"/>
+        <result column="ext4" property="ext4" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="BaseColumns">
+      a.comment_id, a.user_id, a.content, a.entity_type, a.entity_id, a.create_time, a.is_delete, 
+      a.ext1, a.ext2, a.ext3, a.ext4
+    </sql>
+    <insert id="insert" parameterType="com.heldon.entity.Comment">
+        insert into comment
+          (comment_id, user_id, content, entity_type, entity_id, create_time, is_delete, ext1, 
+          ext2, ext3, ext4)
+        values
+          (#{commentId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
+          #{entityType,jdbcType=INTEGER}, #{entityId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+          #{isDelete,jdbcType=BIT}, #{ext1,jdbcType=INTEGER}, #{ext2,jdbcType=INTEGER}, #{ext3,jdbcType=VARCHAR}, 
+          #{ext4,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.heldon.entity.Comment">
+        insert into comment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="commentId != null">
+                comment_id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="entityType != null">
+                entity_type,
+            </if>
+            <if test="entityId != null">
+                entity_id,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="isDelete != null">
+                is_delete,
+            </if>
+            <if test="ext1 != null">
+                ext1,
+            </if>
+            <if test="ext2 != null">
+                ext2,
+            </if>
+            <if test="ext3 != null">
+                ext3,
+            </if>
+            <if test="ext4 != null">
+                ext4,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="commentId != null">
+                #{commentId,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="entityType != null">
+                #{entityType,jdbcType=INTEGER},
+            </if>
+            <if test="entityId != null">
+                #{entityId,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isDelete != null">
+                #{isDelete,jdbcType=BIT},
+            </if>
+            <if test="ext1 != null">
+                #{ext1,jdbcType=INTEGER},
+            </if>
+            <if test="ext2 != null">
+                #{ext2,jdbcType=INTEGER},
+            </if>
+            <if test="ext3 != null">
+                #{ext3,jdbcType=VARCHAR},
+            </if>
+            <if test="ext4 != null">
+                #{ext4,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="update" parameterType="com.heldon.entity.Comment">
+        update comment
+        set
+            comment_id = #{commentId,jdbcType=INTEGER},
+            user_id = #{userId,jdbcType=INTEGER},
+            content = #{content,jdbcType=VARCHAR},
+            entity_type = #{entityType,jdbcType=INTEGER},
+            entity_id = #{entityId,jdbcType=INTEGER},
+            create_time = #{createTime,jdbcType=TIMESTAMP},
+            is_delete = #{isDelete,jdbcType=BIT},
+            ext1 = #{ext1,jdbcType=INTEGER},
+            ext2 = #{ext2,jdbcType=INTEGER},
+            ext3 = #{ext3,jdbcType=VARCHAR},
+            ext4 = #{ext4,jdbcType=VARCHAR}
+        where comment_id = #{commentId,jdbcType=INTEGER}
+    </update>
+    <update id="updateSelective" parameterType="com.heldon.entity.Comment">
+        update comment
+        <set>
+            <if test="commentId != null">
+                comment_id = #{commentId,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="content != null">
+                content = #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="entityType != null">
+                entity_type = #{entityType,jdbcType=INTEGER},
+            </if>
+            <if test="entityId != null">
+                entity_id = #{entityId,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete,jdbcType=BIT},
+            </if>
+            <if test="ext1 != null">
+                ext1 = #{ext1,jdbcType=INTEGER},
+            </if>
+            <if test="ext2 != null">
+                ext2 = #{ext2,jdbcType=INTEGER},
+            </if>
+            <if test="ext3 != null">
+                ext3 = #{ext3,jdbcType=VARCHAR},
+            </if>
+            <if test="ext4 != null">
+                ext4 = #{ext4,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where comment_id = #{commentId,jdbcType=INTEGER}
+    </update>
+    <select id="queryOne" resultMap="BaseMap" parameterType="Integer">
+        select
+        <include refid="BaseColumns"/>
+        from comment a
+        where a.comment_id = #{commentId,jdbcType=INTEGER}
+    </select>
+    <delete id="delete" parameterType="Integer">
+        delete from comment where comment_id = #{commentId,jdbcType=INTEGER}
+    </delete>
+</mapper>

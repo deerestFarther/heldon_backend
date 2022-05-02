@@ -8,13 +8,6 @@
       <jdbc-url>jdbc:mysql://localhost:3306/own</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="heldon@localhost" uuid="23c4cd0f-a445-498a-81bd-53fe32234576">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/heldon</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
     <data-source source="LOCAL" name="fred@localhost" uuid="6e1c0893-fa1a-4f73-9f48-3ad7aed3de7a">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
