@@ -27,5 +27,4 @@ public class Authorization {
     private String ext3;
     private String ext4;
 
-
 }
