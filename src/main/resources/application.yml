@@ -1,7 +1,7 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/springboot
+    url: jdbc:mysql://localhost:3306/heldontest
     username: root
     password: 86292722
 
@@ -35,3 +35,6 @@ spring:
 #Mybatis-plus配置
   mybatis-plus:
     mapper-locations: classpath*:mapper/**/*.xml
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
