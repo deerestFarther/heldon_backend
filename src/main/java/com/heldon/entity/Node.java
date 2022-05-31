@@ -26,7 +26,7 @@ import java.util.Date;
 @ToString
 @Getter
 @Setter
-public class Node implements Serializable {
+public class Node {
 
 
     @TableId(value = "node_id", type = IdType.AUTO)

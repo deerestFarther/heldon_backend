@@ -25,6 +25,7 @@ public class UserController {
         return userInfo;
     }
 
+
     @GetMapping("/getInfoByNickname/{nickname}")
     @ApiOperation("按用户昵称查找用户信息")
     public List<User> getInfoByNickname(@PathVariable String nickname){
