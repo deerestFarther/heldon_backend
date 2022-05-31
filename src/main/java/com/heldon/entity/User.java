@@ -1,6 +1,7 @@
 package com.heldon.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -17,6 +18,7 @@ public class User {
     private String nickname;
     private String avatar;
     private Date createTime;
+    @TableLogic
     private Boolean isDelete;
     private Integer ext1;
     private Integer ext2;

@@ -180,21 +180,17 @@
         <entry key="network">
           <value>
             <Config>
-              <option name="comment" value="true" />
               <option name="daoMvnPath" value="src/main/java" />
               <option name="daoName" value="NetworkDao" />
               <option name="daoPackage" value="generator" />
               <option name="daoPostfix" value="Dao" />
               <option name="daoTargetFolder" value="$PROJECT_DIR$" />
-              <option name="modelMvnPath" value="src/main/java/" />
+              <option name="modelMvnPath" value="src/main/java" />
               <option name="modelName" value="Network" />
               <option name="modelPackage" value="generator" />
               <option name="modelTargetFolder" value="$PROJECT_DIR$" />
-              <option name="mysql_8" value="true" />
               <option name="name" value="network" />
               <option name="needToStringHashcodeEquals" value="true" />
-              <option name="offsetLimit" value="true" />
-              <option name="overrideXML" value="true" />
               <option name="primaryKey" value="net_id" />
               <option name="projectFolder" value="$PROJECT_DIR$" />
               <option name="tableName" value="network" />
@@ -209,21 +205,17 @@
         <entry key="node">
           <value>
             <Config>
-              <option name="comment" value="true" />
               <option name="daoMvnPath" value="src/main/java" />
               <option name="daoName" value="NodeDao" />
               <option name="daoPackage" value="generator" />
               <option name="daoPostfix" value="Dao" />
               <option name="daoTargetFolder" value="$PROJECT_DIR$" />
-              <option name="modelMvnPath" value="src/main/java/" />
+              <option name="modelMvnPath" value="src/main/java" />
               <option name="modelName" value="Node" />
               <option name="modelPackage" value="generator" />
               <option name="modelTargetFolder" value="$PROJECT_DIR$" />
-              <option name="mysql_8" value="true" />
               <option name="name" value="node" />
               <option name="needToStringHashcodeEquals" value="true" />
-              <option name="offsetLimit" value="true" />
-              <option name="overrideXML" value="true" />
               <option name="primaryKey" value="node_id" />
               <option name="projectFolder" value="$PROJECT_DIR$" />
               <option name="tableName" value="node" />
@@ -238,21 +230,17 @@
         <entry key="relation">
           <value>
             <Config>
-              <option name="comment" value="true" />
               <option name="daoMvnPath" value="src/main/java" />
               <option name="daoName" value="RelationDao" />
               <option name="daoPackage" value="generator" />
               <option name="daoPostfix" value="Dao" />
               <option name="daoTargetFolder" value="$PROJECT_DIR$" />
-              <option name="modelMvnPath" value="src/main/java/" />
+              <option name="modelMvnPath" value="src/main/java" />
               <option name="modelName" value="Relation" />
               <option name="modelPackage" value="generator" />
               <option name="modelTargetFolder" value="$PROJECT_DIR$" />
-              <option name="mysql_8" value="true" />
               <option name="name" value="relation" />
               <option name="needToStringHashcodeEquals" value="true" />
-              <option name="offsetLimit" value="true" />
-              <option name="overrideXML" value="true" />
               <option name="primaryKey" value="edge_id" />
               <option name="projectFolder" value="$PROJECT_DIR$" />
               <option name="tableName" value="relation" />
