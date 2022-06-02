@@ -25,8 +25,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public List<User> selectUserByNickname(String nickname) {
-        Map<String,Object> query = new HashMap<>();
-        query.put("nickname",nickname);
+        Map<String, Object> query = new HashMap<>();
+        query.put("nickname", nickname);
         return userMapper.selectByMap(query);
     }
 
@@ -36,6 +36,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         user.setAvatar("avatar");
         user.setNickname(nickname);
         user.setCreateTime(new Date());
+        //todo 还有创建关于该用户的一个喜爱收藏夹
         return userMapper.insert(user);
     }
 }
