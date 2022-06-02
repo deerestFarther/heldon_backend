@@ -35,6 +35,16 @@ public class Relation {
 
     private Integer nodeIdTo;
 
+    private String fontColor;
+
+    private String lineShape;
+
+    private String text;
+
+    private Double lineWidth;
+
+    private String color;
+
     private String edgeName;
 
     private String content;

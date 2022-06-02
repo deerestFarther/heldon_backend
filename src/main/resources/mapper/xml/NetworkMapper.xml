@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heldon.mapper.NetworkMapper">
+    <select id="getRootIdNameByNetId" parameterType="int" resultType="java.lang.String">
+        select node_name
+        from network
+                 right join node n on n.node_id = network.root_node_id
+        where network.net_id = #{netId}
+    </select>
+</mapper>

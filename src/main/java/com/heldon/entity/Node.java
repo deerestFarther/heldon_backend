@@ -39,6 +39,16 @@ public class Node {
 
     private String nodeName;
 
+    private String id;
+
+    private String text;
+
+    private String color;
+
+    private String borderColor;
+
+    private String fontColor;
+
     private String content;
 
     /**
@@ -48,7 +58,7 @@ public class Node {
 
     private Integer y;
 
-    private String picUrl;
+    private String url;
 
     /**
      * 创建时间/更新时间

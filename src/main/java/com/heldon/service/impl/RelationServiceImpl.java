@@ -4,7 +4,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.heldon.mapper.RelationMapper;
 import com.heldon.entity.Relation;
 import com.heldon.service.RelationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * (Relation)表服务实现类
@@ -14,6 +17,12 @@ import org.springframework.stereotype.Service;
  */
 @Service("relationService")
 public class RelationServiceImpl extends ServiceImpl<RelationMapper, Relation> implements RelationService {
+    @Autowired
+    RelationMapper mapper;
 
+    @Override
+    public List<Relation> getRelationListByNetId(int netId) {
+        return mapper.selectRelationListByNetId(netId);
+    }
 }
 
