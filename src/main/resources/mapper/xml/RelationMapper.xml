@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heldon.mapper.RelationMapper">
+    <select id="selectRelationListByNetId" parameterType="int" resultType="com.heldon.entity.Relation">
+        select *
+        from relation
+        where node_id_from in (select node_id from node where net_id = #{netId})
+    </select>
+</mapper>

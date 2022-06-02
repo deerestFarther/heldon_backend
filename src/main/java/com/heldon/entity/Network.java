@@ -32,9 +32,11 @@ public class Network {
     /**
      * 外键
      */
-    private String userId;
+    private Long userId;
 
     private String netName;
+
+    private Integer rootNodeId;
 
     /**
      * 是否必要？

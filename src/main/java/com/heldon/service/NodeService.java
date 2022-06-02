@@ -1,6 +1,8 @@
 package com.heldon.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.heldon.DTO.NodeListDTO;
+import com.heldon.DTO.NodeDTO;
 import com.heldon.entity.Node;
 
 /**
@@ -10,6 +12,9 @@ import com.heldon.entity.Node;
  * @since 2022-05-02 10:54:29
  */
 public interface NodeService extends IService<Node> {
+    boolean insertOneNode(NodeDTO nodeDTO);
+
+    boolean updateNodeList(NodeListDTO nodeList);
 
 }
 
