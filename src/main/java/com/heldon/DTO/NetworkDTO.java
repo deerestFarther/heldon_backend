@@ -20,4 +20,7 @@ public class NetworkDTO {
     private String netName;
     private List<Node> nodeList;
     private List<Relation> relationList;
+
+
+
 }
