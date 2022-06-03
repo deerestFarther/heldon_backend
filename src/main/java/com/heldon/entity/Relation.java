@@ -26,7 +26,7 @@ import java.util.Date;
 @ToString
 @Getter
 @Setter
-public class Relation implements Serializable {
+public class Relation {
 
     @TableId(value = "edge_id", type = IdType.AUTO)
     private Integer edgeId;
