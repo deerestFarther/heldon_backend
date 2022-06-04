@@ -2,6 +2,7 @@ package com.heldon.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.heldon.entity.User;
+import com.heldon.model.UserChange;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,4 +15,6 @@ public interface UserService extends IService<User> {
     List<User> selectUserByNickname(String nickname);
 
     int insertUser(String nickname);
+
+    String editUser(UserChange userChange);
 }

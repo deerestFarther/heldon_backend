@@ -4,8 +4,12 @@ package com.heldon.controller;
 import com.heldon.entity.Tag;
 import com.heldon.service.impl.TagServiceImpl;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * (Tag)表控制层
@@ -22,6 +26,12 @@ public class TagController {
      */
     @Autowired
     private TagServiceImpl tagService;
+
+    @GetMapping
+    @ApiOperation(value = "获取tag字典")
+    public List<Tag> getTags(){
+        return tagService.getTags();
+    }
 
 }
 

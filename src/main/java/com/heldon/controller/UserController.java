@@ -1,6 +1,8 @@
 package com.heldon.controller;
 
 import com.heldon.entity.User;
+import com.heldon.model.Response;
+import com.heldon.model.UserChange;
 import com.heldon.service.impl.UserServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -38,5 +40,11 @@ public class UserController {
     public int addUser(@PathVariable String nickname){
         int rlt = userService.insertUser(nickname);
         return rlt;
+    }
+
+    @PostMapping("/edit")
+    @ApiOperation("修改用户信息")
+    public Response<Void> addUser(@RequestBody UserChange userChange){
+        return Response.okMsg(userService.editUser(userChange));
     }
 }
