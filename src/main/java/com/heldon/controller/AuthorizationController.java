@@ -118,5 +118,16 @@ public class AuthorizationController {
         authorization.setCredentials(credentials);
         return authorizationService.save(authorization);
     }
+
+    @PostMapping("/validate/authorization/{identifier}&&{credential}")
+    @ApiOperation("登录验证")
+    public Long validateAuthoriztion(@PathVariable String identifier, @PathVariable String credential) {
+        Map<String, Object> query = new HashMap<>();
+        query.put("identifier", identifier);
+        query.put("credentials", credential);
+        List<Authorization> rlt = authorizationService.listByMap(query);
+        if (rlt.size() != 0) return rlt.get(0).getUserId();
+        return null;
+    }
 }
 
