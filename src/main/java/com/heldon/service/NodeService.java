@@ -1,9 +1,12 @@
 package com.heldon.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.heldon.DTO.NodeListDTO;
 import com.heldon.DTO.NodeDTO;
+import com.heldon.DTO.NodeXYDTO;
+import com.heldon.DTO.UpdateNodeDTO;
 import com.heldon.entity.Node;
+
+import java.util.List;
 
 /**
  * (Node)表服务接口
@@ -14,7 +17,10 @@ import com.heldon.entity.Node;
 public interface NodeService extends IService<Node> {
     boolean insertOneNode(NodeDTO nodeDTO);
 
-    boolean updateNodeList(NodeListDTO nodeList);
+    boolean updateNodeList(List<NodeXYDTO> nodeList);
 
+    boolean deleteNodeByNodeId(int nodeId);
+
+    boolean updateNode(UpdateNodeDTO updateNodeDTO);
 }
 

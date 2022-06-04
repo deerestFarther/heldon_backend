@@ -3,7 +3,8 @@ package com.heldon.DTO;
 import lombok.Data;
 
 @Data
-public class UpdateNode {
+public class UpdateNodeDTO {
+    private int nodeId;
     private String nodeName;
     private String id;
     private String text;
@@ -11,8 +12,5 @@ public class UpdateNode {
     private String borderColor;
     private String fontColor;
     private String content;
-    private int nodeId;
-    private int x;
-    private int y;
     private String url;
 }

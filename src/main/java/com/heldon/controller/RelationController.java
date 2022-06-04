@@ -1,6 +1,7 @@
 package com.heldon.controller;
 
 
+import com.heldon.DTO.NewRelationDTO;
 import com.heldon.DTO.RelationDTO;
 import com.heldon.entity.Relation;
 import com.heldon.service.impl.RelationServiceImpl;
@@ -29,24 +30,22 @@ public class RelationController {
     @Autowired
     private RelationServiceImpl relationService;
 
-    @GetMapping("/insertRelation")
-    @ApiOperation("新增一条边")
-    public Boolean insertRelation(@RequestBody RelationDTO relationDTO) {
-        return false;
+    @PostMapping("/insertRelation")
+    @ApiOperation("新增一条边,并返回id")
+    public Boolean insertRelation(@RequestBody NewRelationDTO newRelationDTO) {
+        return relationService.insertRelation(newRelationDTO);
     }
 
-    @GetMapping("/deleteRelationByEdgeId")
+    @DeleteMapping("/deleteRelationByEdgeId/{edgeId}")
     @ApiOperation("删除一条边")
-    public Boolean deleteRelationByEdgeId(int edgeId) {
-        Map<String, Object> del = new HashMap<>();
-        del.put("edge_id", edgeId);
-        return relationService.removeByMap(del);
+    public Boolean deleteRelationByEdgeId(@PathVariable int edgeId) {
+        return relationService.deleteRelationByEdgeId(edgeId);
     }
 
-    @GetMapping("/updateRelation")
+    @PutMapping("/updateRelation")
     @ApiOperation("更新一条边")
     public Boolean updateRelation(@RequestBody RelationDTO relationDTO) {
-        return false;
+        return relationService.updateRelation(relationDTO);
     }
 
     @GetMapping("/getRelationListByNetId/{netId}")
@@ -54,7 +53,5 @@ public class RelationController {
     public List<Relation> getRelationListByNetId(@PathVariable int netId) {
         return relationService.getRelationListByNetId(netId);
     }
-
-
 }
 

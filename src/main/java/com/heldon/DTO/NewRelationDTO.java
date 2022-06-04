@@ -5,13 +5,14 @@ import lombok.Data;
 /**
  * @author admin
  * @version 1.0.0
- * @ClassName RelationDTO.java
+ * @ClassName newRelationDTO.java
  * @Description TODO
- * @createTime 2022年06月01日 20:04:00
+ * @createTime 2022年06月03日 22:54:00
  */
 @Data
-public class RelationDTO {
-    private Integer edgeId;
+public class NewRelationDTO {
+    private Integer from;
+    private Integer to;
     private String fontColor;
     private String lineShape;
     private String text;
@@ -19,4 +20,6 @@ public class RelationDTO {
     private String color;
     private String edgeName;
     private String content;
+    private int x;
+    private int y;
 }

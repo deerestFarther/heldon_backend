@@ -1,8 +1,9 @@
 package com.heldon.controller;
 
 
-import com.heldon.DTO.NodeListDTO;
 import com.heldon.DTO.NodeDTO;
+import com.heldon.DTO.NodeXYDTO;
+import com.heldon.DTO.UpdateNodeDTO;
 import com.heldon.entity.Node;
 import com.heldon.service.impl.NodeServiceImpl;
 import io.swagger.annotations.Api;
@@ -36,17 +37,21 @@ public class NodeController {
         return nodeService.insertOneNode(nodeDTO);
     }
 
-    @GetMapping("/deleteNodeByNodeId/{nodeId}")
+    @DeleteMapping("/deleteNodeByNodeId/{nodeId}")
     @ApiOperation("按nodeId删除node")
     public boolean deleteNodeByNodeId(@PathVariable int nodeId) {
-        Map<String, Object> del = new HashMap<>();
-        del.put("node_id", nodeId);
-        return nodeService.removeByMap(del);
+        return nodeService.deleteNodeByNodeId(nodeId);
     }
 
-    @PostMapping("/updateNodeList")
-    @ApiOperation("更新整张图上的所有node")
-    public Boolean updateNodeList(@RequestBody NodeListDTO nodeList) {
+    @PutMapping("/updateNode")
+    @ApiOperation("更新结点的信息，除了x，y")
+    public Boolean updateNode(@RequestBody UpdateNodeDTO updateNodeDTO) {
+        return nodeService.updateNode(updateNodeDTO);
+    }
+
+    @PutMapping("/updateNodeList")
+    @ApiOperation("更新整张图上的所有node的坐标，记录布局信息")
+    public Boolean updateNodeList(@RequestBody List<NodeXYDTO> nodeList) {
         return nodeService.updateNodeList(nodeList);
     }
 

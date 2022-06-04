@@ -5,6 +5,7 @@
     <select id="selectRelationListByNetId" parameterType="int" resultType="com.heldon.entity.Relation">
         select *
         from relation
-        where node_id_from in (select node_id from node where net_id = #{netId})
+        where node_id_from in (select node_id from node where net_id = #{netId} and node.is_delete = 0)
+          and relation.is_delete = 0
     </select>
 </mapper>
