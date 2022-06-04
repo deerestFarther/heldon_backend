@@ -37,7 +37,7 @@ public class Relation {
 
     private String fontColor;
 
-    private String lineShape;
+    private Integer lineShape;
 
     private String text;
 

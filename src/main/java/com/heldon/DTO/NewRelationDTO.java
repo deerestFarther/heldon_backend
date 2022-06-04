@@ -14,7 +14,7 @@ public class NewRelationDTO {
     private Integer from;
     private Integer to;
     private String fontColor;
-    private String lineShape;
+    private Integer lineShape;
     private String text;
     private Double lineWidth;
     private String color;
