@@ -29,13 +29,13 @@ public class NetworkController {
     @Autowired
     private NetworkServiceImpl networkService;
 
-    @GetMapping("/insertNetwork/{netName}/{userId}")
+    @PutMapping("/insertNetwork/{netName}/{userId}")
     @ApiOperation("新增一张关系网")
     public Boolean insertOneNetwork(@PathVariable String netName, @PathVariable long userId) {
         return networkService.insertOneNetwork(netName, userId);
     }
 
-    @GetMapping("/deleteNetworkByNetId/{netId}")
+    @DeleteMapping("/deleteNetworkByNetId/{netId}")
     @ApiOperation("按netId删除关系网")
     public Boolean deleteNetworkByNetId(@PathVariable int netId) {
         Map<String, Object> map = new HashMap<>();
