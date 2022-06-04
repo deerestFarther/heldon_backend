@@ -1,6 +1,8 @@
 package com.heldon.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.heldon.DTO.NewRelationDTO;
+import com.heldon.DTO.RelationDTO;
 import com.heldon.entity.Relation;
 
 import java.util.List;
@@ -14,5 +16,10 @@ import java.util.List;
 public interface RelationService extends IService<Relation> {
     List<Relation> getRelationListByNetId(int netId);
 
+    Boolean updateRelation(RelationDTO relationDTO);
+
+    Boolean insertRelation(NewRelationDTO newRelationDTO);
+
+    Boolean deleteRelationByEdgeId(int edgeId);
 }
 

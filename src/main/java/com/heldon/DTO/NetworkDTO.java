@@ -21,6 +21,4 @@ public class NetworkDTO {
     private List<Node> nodeList;
     private List<Relation> relationList;
 
-
-
 }
