@@ -51,7 +51,7 @@ public class NodeServiceImpl extends ServiceImpl<NodeMapper, Node> implements No
         int cnt = 0;//更新的行数
         for (NodeXYDTO nodeXY : nodeList) {
             Node node = new Node();
-            node.setNodeId(nodeXY.getNetId());
+            node.setNodeId(nodeXY.getNodeId());
             node.setX(nodeXY.getX());
             node.setY(nodeXY.getY());
             cnt += nodeMapper.updateById(node);

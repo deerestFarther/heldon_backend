@@ -18,7 +18,7 @@ import java.util.Map;
  * @since 2022-05-02 10:54:30
  */
 @RestController
-@Api(tags = "标签管理接口")
+@Api(tags = "Tag - 标签管理接口")
 @RequestMapping("/tag")
 public class TagController {
     /**

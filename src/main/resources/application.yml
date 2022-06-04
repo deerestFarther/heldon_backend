@@ -1,9 +1,9 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/rn
+    url: jdbc:mysql://localhost:3306/heldontest
     username: root
-    password: forthecode
+    password: 86292722
 
 #redis 配置
   redis:

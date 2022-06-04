@@ -20,7 +20,7 @@ import java.util.Map;
  * @since 2022-05-02 10:54:28
  */
 @RestController
-@Api(tags = "关系网管理接口")
+@Api(tags = "Network - 关系网管理接口")
 @RequestMapping("/network")
 public class NetworkController {
     /**
@@ -29,7 +29,7 @@ public class NetworkController {
     @Autowired
     private NetworkServiceImpl networkService;
 
-    @PutMapping("/insertNetwork/{netName}/{userId}")
+    @PostMapping("/insertNetwork/{netName}/{userId}")
     @ApiOperation("新增一张关系网")
     public Boolean insertOneNetwork(@PathVariable String netName, @PathVariable long userId) {
         return networkService.insertOneNetwork(netName, userId);

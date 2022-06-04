@@ -12,7 +12,7 @@ import lombok.Data;
  */
 @Data
 public class NodeXYDTO {
-    private int netId;
+    private int nodeId;
     private int x;
     private int y;
 }

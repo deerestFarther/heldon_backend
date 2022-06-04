@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @RestController
-@Api(tags = "用户账号相关接口")
+@Api(tags = "User - 用户账号相关接口")
 @RequestMapping("/user")
 public class UserController {
 

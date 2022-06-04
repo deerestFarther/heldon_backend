@@ -21,7 +21,7 @@ import java.util.Map;
  * @since 2022-05-02 10:54:29
  */
 @RestController
-@Api(tags = "关系网边管理接口")
+@Api(tags = "Relation - 关系网边管理接口")
 @RequestMapping("/relation")
 public class RelationController {
     /**

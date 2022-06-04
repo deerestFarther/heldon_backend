@@ -21,7 +21,7 @@ import java.util.Set;
  * @since 2022-05-02 10:54:31
  */
 @RestController
-@Api(tags = "关于贴标签该行为接口（而非贴纸）")
+@Api(tags = "UserTag - 关于贴标签该行为接口（而非贴纸）")
 @RequestMapping("/userTag")
 public class UserTagController {
     /**

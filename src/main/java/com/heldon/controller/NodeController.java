@@ -22,7 +22,7 @@ import java.util.Map;
  * @since 2022-05-02 10:54:29
  */
 @RestController
-@Api(tags = "关系网结点管理接口")
+@Api(tags = "Node - 关系网结点管理接口")
 @RequestMapping("/node")
 public class NodeController {
     /**
