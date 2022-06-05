@@ -65,13 +65,13 @@ public class NetworkController {
         return networkService.getRootIdNameByNetId(netId);
     }
 
-    @GetMapping("/getRootIdNameByNetId/{netId}")
-    @ApiOperation("按netId查找关系网的rootIdName")
-    public List<Network> getNetworkByUserId(@PathVariable long userId) {
-        Map<String, Object> map = new HashMap<>();
-        map.put("user_id", userId);
-        return networkService.listByMap(map);
-    }
+//    @GetMapping("/getRootIdNameByNetId/{netId}")
+//    @ApiOperation("按netId查找关系网的rootIdName")
+//    public List<Network> getNetworkByUserId(@PathVariable long userId) {
+//        Map<String, Object> map = new HashMap<>();
+//        map.put("user_id", userId);
+//        return networkService.listByMap(map);
+//    }
 
 
 //    todo 前端请求起来麻烦的话就写
