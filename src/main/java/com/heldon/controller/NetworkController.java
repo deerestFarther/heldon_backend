@@ -39,7 +39,7 @@ public class NetworkController {
     @ApiOperation("按netId删除关系网")
     public Boolean deleteNetworkByNetId(@PathVariable int netId) {
         Map<String, Object> map = new HashMap<>();
-        map.put("netId", netId);
+        map.put("net_Id", netId);
         return networkService.removeByMap(map);
     }
 
@@ -65,7 +65,7 @@ public class NetworkController {
         return networkService.getRootIdNameByNetId(netId);
     }
 
-    @GetMapping("/getRootIdNameByNetId/{netId}")
+    @GetMapping("/getNetworkByUserId/{userId}")
     @ApiOperation("按netId查找关系网的rootIdName")
     public List<Network> getNetworkByUserId(@PathVariable long userId) {
         Map<String, Object> map = new HashMap<>();
