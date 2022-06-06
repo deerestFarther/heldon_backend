@@ -2,7 +2,9 @@ package com.heldon.controller;
 
 
 import com.heldon.entity.Authorization;
+import com.heldon.entity.Collection;
 import com.heldon.entity.User;
+import com.heldon.service.CollectionService;
 import com.heldon.service.UserService;
 import com.heldon.service.impl.AuthorizationServiceImpl;
 import io.swagger.annotations.Api;
@@ -33,6 +35,9 @@ public class AuthorizationController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CollectionService collectionService;
 
     @GetMapping("/exists/authorization/{identifier}")
     @ApiOperation("确认某个唯一标识没有被注册（绑定）过，用于注册表单异步验证")
@@ -97,6 +102,13 @@ public class AuthorizationController {
         query.put("nickname", identifier);
         List<User> newUser = userService.listByMap(query);//拿到这个用户的信息
         Long userId = newUser.get(0).getUserId();//拿到这个用户的id
+        //为该用户创建一个喜爱收藏夹
+        Collection collection = new Collection();
+        collection.setUserId(userId);
+        collection.setCollectionType(1);
+        collection.setCollectionName("我的喜爱");
+        collection.setContent("个人喜爱收藏夹");
+        collectionService.save(collection);
 
         authorization.setUserId(userId);
         authorization.setIdentityType(identityType);
