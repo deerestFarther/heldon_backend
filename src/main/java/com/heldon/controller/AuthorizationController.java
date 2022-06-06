@@ -45,6 +45,16 @@ public class AuthorizationController {
         return (getUserIdByIdentifier(identifier) != null);
     }
 
+    @PostMapping("/get/lastlogin/{userId}&&{identifier}")
+    @ApiOperation("获取上一次登录时间")
+    public Date getLastLogin(@PathVariable Long userId, @PathVariable String identifier){
+        Map<String,Object> query = new HashMap<>();
+        query.put("user_id",userId);
+        query.put("identifier",identifier);
+        List<Authorization> rlt = authorizationService.listByMap(query);
+        return rlt.get(0).getLastloginTime();
+    }
+
     @GetMapping("/get/authorizations/{userId}")
     @ApiOperation("按userId查找该用户的授权信息")
     public List<Authorization> getAuthorizationByUserId(@PathVariable Long userId) {
@@ -138,7 +148,16 @@ public class AuthorizationController {
         query.put("identifier", identifier);
         query.put("credentials", credential);
         List<Authorization> rlt = authorizationService.listByMap(query);
-        if (rlt.size() != 0) return rlt.get(0).getUserId();
+        if (rlt.size() != 0) {//验证通过
+            Long userId = rlt.get(0).getUserId();
+            int authId = rlt.get(0).getAuthId();
+            //再次登录，并更新上次登录时间
+            Authorization authorization = new Authorization();
+            authorization.setAuthId(authId);
+            authorization.setLastloginTime(new Date());
+            authorizationService.updateById(authorization);
+            return userId;
+        }
         return null;
     }
 }
