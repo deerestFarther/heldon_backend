@@ -65,6 +65,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         if(userChange.getAvatar()!=null){
             user.setAvatar(userChange.getAvatar());
         }
+        if (userChange.getExt3()!=null){//修改简介
+            user.setExt3(userChange.getExt3());
+        }
         userMapper.updateById(user);
         return "修改成功";
     }

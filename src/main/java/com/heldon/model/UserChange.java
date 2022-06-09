@@ -11,6 +11,7 @@ import lombok.experimental.Accessors;
 public class UserChange {
     private String nickname;
     private String avatar;
+    private String ext3;
     @ApiModelProperty(required = true)
     private Long userId;
 }

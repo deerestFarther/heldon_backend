@@ -66,7 +66,7 @@ public class NetworkController {
     }
 
     @GetMapping("/getNetworkByUserId/{userId}")
-    @ApiOperation("按netId查找关系网的rootIdName")
+    @ApiOperation("按userId查找关系网的rootIdName")
     public List<Network> getNetworkByUserId(@PathVariable long userId) {
         Map<String, Object> map = new HashMap<>();
         map.put("user_id", userId);
