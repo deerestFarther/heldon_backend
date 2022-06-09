@@ -3,7 +3,10 @@ package com.heldon.controller;
 
 import com.heldon.DTO.NetworkDTO;
 import com.heldon.entity.Network;
+import com.heldon.model.TagAdd;
+import com.heldon.service.TagService;
 import com.heldon.service.impl.NetworkServiceImpl;
+import com.heldon.service.impl.UserTagServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,18 +31,25 @@ public class NetworkController {
      */
     @Autowired
     private NetworkServiceImpl networkService;
+    @Autowired
+    private UserTagServiceImpl userTagService;
 
-    @PostMapping("/insertNetwork/{netName}/{userId}")
+    @PostMapping("/insertNetwork/{netName}/{userId}/{tagId}")
     @ApiOperation("新增一张关系网")
-    public Boolean insertOneNetwork(@PathVariable String netName, @PathVariable long userId) {
-        return networkService.insertOneNetwork(netName, userId);
+    public Boolean insertOneNetwork(@PathVariable String netName, @PathVariable long userId, @PathVariable int tagId) {
+        int netId = networkService.insertOneNetwork(netName, userId);
+        TagAdd tagAdd = new TagAdd();
+        tagAdd.setTagId(tagId);
+        tagAdd.setTagType(1);
+        tagAdd.setTargetId(netId);
+        return userTagService.saveTag(tagAdd);
     }
 
     @DeleteMapping("/deleteNetworkByNetId/{netId}")
     @ApiOperation("按netId删除关系网")
     public Boolean deleteNetworkByNetId(@PathVariable int netId) {
         Map<String, Object> map = new HashMap<>();
-        map.put("net_Id", netId);
+        map.put("net_id", netId);
         return networkService.removeByMap(map);
     }
 
@@ -72,7 +82,6 @@ public class NetworkController {
         map.put("user_id", userId);
         return networkService.listByMap(map);
     }
-
 
 //    todo 前端请求起来麻烦的话就写
 //    @GetMapping("/getNetworkDetailsByNetIdByNetId/{netId}")
