@@ -51,6 +51,16 @@ public class UserTagController {
         return userTagService.getNetTags(targetIds);
     }
 
+    @GetMapping("/get/net/{tagId}")
+    @ApiOperation("根据标签获取关系网")
+    @ApiImplicitParam(name="tagId",value = "传入标签ID",required = true)
+    public List<Integer> getNetTags(@PathVariable String tagId)
+    {
+        return userTagService.getNetByTag(tagId);
+    }
+
+
+
    /* @GetMapping("/get/usertag")
     @ApiOperation("获取用户标签")
     public List<UserTags> getUserTags {

@@ -20,5 +20,7 @@ public interface UserTagService extends IService<UserTag> {
     public int deleteTag(int taggingId);
 
     public List<NetTags> getNetTags(List<Integer> ids);
+
+    public List<Integer> getNetByTag(String tagId);
 }
 
