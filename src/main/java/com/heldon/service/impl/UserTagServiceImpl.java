@@ -67,5 +67,12 @@ public class UserTagServiceImpl extends ServiceImpl<UserTagMapper, UserTag> impl
         }
         return netTagsList;
     }
+
+    public List<Integer> getNetByTag(String tagId){
+        QueryWrapper<UserTag> wrapper = Wrappers.query();
+        wrapper.eq("tag_id", tagId);
+        List<Integer> res = userTagMapper.selectList(wrapper).stream().map(UserTag::getTargetId).collect(Collectors.toList());
+        return res;
+    }
 }
 
