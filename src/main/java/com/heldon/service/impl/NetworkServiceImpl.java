@@ -5,6 +5,7 @@ import com.heldon.DTO.NetworkDTO;
 import com.heldon.mapper.NetworkMapper;
 import com.heldon.entity.Network;
 import com.heldon.service.NetworkService;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,13 +21,14 @@ public class NetworkServiceImpl extends ServiceImpl<NetworkMapper, Network> impl
     NetworkMapper mapper;
 
     @Override
-    public boolean insertOneNetwork(String netName, Long userId) {
+    public Integer insertOneNetwork(String netName, Long userId) {
         Network net = new Network();
         net.setNetName(netName);
         net.setUserId(userId);
         net.setRootNodeId(0);
         net.setCommentCount(0);
-        return mapper.insert(net) > 0;
+        mapper.insert(net);
+        return net.getNetId();
     }
 
     @Override

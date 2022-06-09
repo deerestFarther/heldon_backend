@@ -27,11 +27,10 @@ public class TagController {
     @Autowired
     private TagServiceImpl tagService;
 
-    @GetMapping
+    @GetMapping("/getTags")
     @ApiOperation(value = "获取tag字典")
     public List<Tag> getTags(){
         return tagService.getTags();
     }
-
 }
 
