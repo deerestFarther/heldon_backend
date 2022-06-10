@@ -13,6 +13,5 @@ import com.heldon.entity.Network;
 public interface NetworkService extends IService<Network> {
     Integer insertOneNetwork(String netName, Long userId);
 
-    String getRootIdNameByNetId(int netId);
 }
 

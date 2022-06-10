@@ -10,6 +10,6 @@ import com.heldon.entity.CollectionNetwork;
  * @since 2022-05-02 10:54:26
  */
 public interface CollectionNetworkService extends IService<CollectionNetwork> {
-
+    Boolean checkIfCollected(Integer netId, Integer userId);
 }
 

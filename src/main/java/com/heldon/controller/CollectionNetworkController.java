@@ -5,6 +5,7 @@ import com.heldon.entity.CollectionNetwork;
 import com.heldon.service.impl.CollectionNetworkServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -50,6 +51,12 @@ public class CollectionNetworkController {
         collectionNetwork.setCollectionId(collectionId);
         collectionNetwork.setNetId(netId);
         return collectionNetworkService.saveOrUpdate(collectionNetwork);
+    }
+
+    @PostMapping("/add/cn/{netId}/{userId}")
+    @ApiOperation("用户是否收藏/喜爱一张关系网")
+    public boolean ifCollected(@PathVariable Integer netId, @PathVariable Integer userId) {
+        return collectionNetworkService.checkIfCollected(netId, userId);
     }
 
 }
