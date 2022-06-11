@@ -6,7 +6,8 @@
         select *
         from collection_network
         where collection_network.collection_id in
-              (select collection.collection_id from collection where user_id = #{userId})
+              (select collection.collection_id from collection where user_id = #{userId} and collection.is_delete = 0)
           and net_id = #{netId}
+          and is_delete = 0
     </select>
 </mapper>

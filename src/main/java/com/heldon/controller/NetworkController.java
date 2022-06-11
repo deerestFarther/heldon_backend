@@ -53,13 +53,17 @@ public class NetworkController {
         return networkService.removeByMap(map);
     }
 
-    @GetMapping("/updateNetNameByNetId/{netName}/{netId}")
-    @ApiOperation("修改关系网名称")
-    public Boolean deleteNetworkByNetId(@PathVariable String netName, @PathVariable int netId) {
-        Map<String, Object> map = new HashMap<>();
-        map.put("net_id", netId);
-        return networkService.removeByMap(map);
+    @GetMapping("/updateNetNameByNetId/{netName}/{imgUrl}/{netId}")
+    @ApiOperation("修改关系网名称与封面图片")
+    public Boolean updateNetworkByNetId(
+            @PathVariable String netName, @PathVariable String imgUrl, @PathVariable int netId) {
+        Network network = new Network();
+        network.setNetId(netId);
+        network.setNetName(netName);
+        network.setExt3(imgUrl);
+        return networkService.updateById(network);
     }
+
 
     @GetMapping("/getNetworkByNetId/{netId}")
     @ApiOperation("按netId查找关系网")

@@ -24,9 +24,8 @@ public class CollectionNetworkServiceImpl extends ServiceImpl<CollectionNetworkM
     CollectionNetworkMapper mapper;
 
     @Override
-    public Boolean checkIfCollected(Integer netId, Integer userId) {
-        List<CollectionNetwork> list = mapper.checkIfCollected(netId, userId);
-        return list != null && list.size() > 0;
+    public List<CollectionNetwork> checkIfCollected(Integer netId, Integer userId) {
+        return mapper.checkIfCollected(netId, userId);
     }
 }
 

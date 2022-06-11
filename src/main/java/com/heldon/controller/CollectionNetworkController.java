@@ -45,17 +45,17 @@ public class CollectionNetworkController {
 
     @PostMapping("/add/cn/{collectionId}&&{netId}")
     @ApiOperation("收藏/喜爱一张关系网")
-    public boolean addCNOne(@PathVariable Integer collectionId, @PathVariable Integer netId) {
+    public CollectionNetwork addCNOne(@PathVariable Integer collectionId, @PathVariable Integer netId) {
         CollectionNetwork collectionNetwork = new CollectionNetwork();
-        //collectionNetwork.setContainsId(containsId);
         collectionNetwork.setCollectionId(collectionId);
         collectionNetwork.setNetId(netId);
-        return collectionNetworkService.saveOrUpdate(collectionNetwork);
+        collectionNetworkService.saveOrUpdate(collectionNetwork);
+        return collectionNetwork;
     }
 
     @PostMapping("/add/cn/{netId}/{userId}")
     @ApiOperation("用户是否收藏/喜爱一张关系网")
-    public boolean ifCollected(@PathVariable Integer netId, @PathVariable Integer userId) {
+    public List<CollectionNetwork> ifCollected(@PathVariable Integer netId, @PathVariable Integer userId) {
         return collectionNetworkService.checkIfCollected(netId, userId);
     }
 

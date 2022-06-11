@@ -3,6 +3,8 @@ package com.heldon.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.heldon.entity.CollectionNetwork;
 
+import java.util.List;
+
 /**
  * (CollectionNetwork)表服务接口
  *
@@ -10,6 +12,6 @@ import com.heldon.entity.CollectionNetwork;
  * @since 2022-05-02 10:54:26
  */
 public interface CollectionNetworkService extends IService<CollectionNetwork> {
-    Boolean checkIfCollected(Integer netId, Integer userId);
+    List<CollectionNetwork> checkIfCollected(Integer netId, Integer userId);
 }
 
