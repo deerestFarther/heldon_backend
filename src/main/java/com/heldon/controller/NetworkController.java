@@ -1,7 +1,9 @@
 package com.heldon.controller;
 
 
+import com.heldon.DTO.NetworkAdd;
 import com.heldon.DTO.NetworkDTO;
+import com.heldon.DTO.NetworkMsg;
 import com.heldon.entity.Network;
 import com.heldon.model.TagAdd;
 import com.heldon.service.TagService;
@@ -34,12 +36,13 @@ public class NetworkController {
     @Autowired
     private UserTagServiceImpl userTagService;
 
-    @PostMapping("/insertNetwork/{netName}/{userId}/{tagId}")
+    @PostMapping("/insertNetwork/")
     @ApiOperation("新增一张关系网")
-    public Boolean insertOneNetwork(@PathVariable String netName, @PathVariable long userId, @PathVariable int tagId) {
-        int netId = networkService.insertOneNetwork(netName, userId);
+    public Boolean insertOneNetwork(@RequestBody NetworkAdd networkAdd) {
+        int netId = networkService.insertOneNetwork(
+                networkAdd.getNetName(), networkAdd.getUrl(), networkAdd.getUserId());
         TagAdd tagAdd = new TagAdd();
-        tagAdd.setTagId(tagId);
+        tagAdd.setTagId(networkAdd.getTagId());
         tagAdd.setTagType(1);
         tagAdd.setTargetId(netId);
         return userTagService.saveTag(tagAdd);
@@ -53,14 +56,13 @@ public class NetworkController {
         return networkService.removeByMap(map);
     }
 
-    @GetMapping("/updateNetNameByNetId/{netName}/{imgUrl}/{netId}")
+    @PutMapping("/updateNetNameByNetId/")
     @ApiOperation("修改关系网名称与封面图片")
-    public Boolean updateNetworkByNetId(
-            @PathVariable String netName, @PathVariable String imgUrl, @PathVariable int netId) {
+    public Boolean updateNetworkByNetId(@RequestBody NetworkMsg networkMsg) {
         Network network = new Network();
-        network.setNetId(netId);
-        network.setNetName(netName);
-        network.setExt3(imgUrl);
+        network.setNetId(networkMsg.getNetId());
+        network.setNetName(networkMsg.getNetName());
+        network.setExt3(networkMsg.getUrl());
         return networkService.updateById(network);
     }
 

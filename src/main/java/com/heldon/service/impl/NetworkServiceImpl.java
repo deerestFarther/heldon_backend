@@ -31,12 +31,13 @@ public class NetworkServiceImpl extends ServiceImpl<NetworkMapper, Network> impl
     NodeService nodeService;
 
     @Override
-    public Integer insertOneNetwork(String netName, Long userId) {
+    public Integer insertOneNetwork(String netName, String imgUrl, Long userId) {
         Network net = new Network();
         net.setNetName(netName);
         net.setUserId(userId);
         net.setRootNodeId(0);
         net.setCommentCount(0);
+        net.setExt3(imgUrl);
         mapper.insert(net);
 
         //在新建好的net中插入一个结点作为根结点
@@ -45,7 +46,7 @@ public class NetworkServiceImpl extends ServiceImpl<NetworkMapper, Network> impl
         nodeDTO.setNodeName(netName);
         nodeDTO.setText(netName);
         nodeDTO.setId(netName);
-        nodeDTO.setContent("");
+        nodeDTO.setContent("结点信息");
         nodeDTO.setFontColor("#111111");
         nodeDTO.setColor("#aaaaaa");
         nodeDTO.setBorderColor("#7f7f7f");
