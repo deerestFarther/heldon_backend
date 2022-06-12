@@ -3,7 +3,7 @@ spring:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/heldontest
     username: root
-    password: 86292722
+    password: AXhmXD6wdndFwXyi
 
 #redis 配置
   redis:
