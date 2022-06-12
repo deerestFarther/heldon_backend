@@ -1,10 +1,16 @@
 package com.heldon.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.heldon.entity.Collection;
+import com.heldon.mapper.CollectionMapper;
 import com.heldon.mapper.CollectionNetworkMapper;
 import com.heldon.entity.CollectionNetwork;
 import com.heldon.service.CollectionNetworkService;
+import io.swagger.models.auth.In;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * (CollectionNetwork)表服务实现类
@@ -14,6 +20,12 @@ import org.springframework.stereotype.Service;
  */
 @Service("collectionNetworkService")
 public class CollectionNetworkServiceImpl extends ServiceImpl<CollectionNetworkMapper, CollectionNetwork> implements CollectionNetworkService {
+    @Autowired
+    CollectionNetworkMapper mapper;
 
+    @Override
+    public List<CollectionNetwork> checkIfCollected(Integer netId, Integer userId) {
+        return mapper.checkIfCollected(netId, userId);
+    }
 }
 

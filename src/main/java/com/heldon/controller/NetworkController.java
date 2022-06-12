@@ -53,30 +53,28 @@ public class NetworkController {
         return networkService.removeByMap(map);
     }
 
-    @GetMapping("/updateNetNameByNetId/{netName}/{netId}")
-    @ApiOperation("修改关系网名称")
-    public Boolean deleteNetworkByNetId(@PathVariable String netName, @PathVariable int netId) {
-        Map<String, Object> map = new HashMap<>();
-        map.put("net_id", netId);
-        return networkService.removeByMap(map);
+    @GetMapping("/updateNetNameByNetId/{netName}/{imgUrl}/{netId}")
+    @ApiOperation("修改关系网名称与封面图片")
+    public Boolean updateNetworkByNetId(
+            @PathVariable String netName, @PathVariable String imgUrl, @PathVariable int netId) {
+        Network network = new Network();
+        network.setNetId(netId);
+        network.setNetName(netName);
+        network.setExt3(imgUrl);
+        return networkService.updateById(network);
     }
+
 
     @GetMapping("/getNetworkByNetId/{netId}")
     @ApiOperation("按netId查找关系网")
-    public List<Network> getNetworkByNetId(@PathVariable int netId) {
+    public Network getNetworkByNetId(@PathVariable int netId) {
         Map<String, Object> map = new HashMap<>();
         map.put("net_id", netId);
-        return networkService.listByMap(map);
-    }
-
-    @GetMapping("/getRootIdNameByNetId/{netId}")
-    @ApiOperation("按netId查找关系网的rootIdName")
-    public String getRootIdNameByNetId(@PathVariable int netId) {
-        return networkService.getRootIdNameByNetId(netId);
+        return networkService.listByMap(map).get(0);
     }
 
     @GetMapping("/getNetworkByUserId/{userId}")
-    @ApiOperation("按userId查找关系网的rootIdName")
+    @ApiOperation("按userId查找关系网")
     public List<Network> getNetworkByUserId(@PathVariable long userId) {
         Map<String, Object> map = new HashMap<>();
         map.put("user_id", userId);

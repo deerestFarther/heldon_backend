@@ -5,6 +5,7 @@ import com.heldon.entity.CollectionNetwork;
 import com.heldon.service.impl.CollectionNetworkServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,12 +45,18 @@ public class CollectionNetworkController {
 
     @PostMapping("/add/cn/{collectionId}&&{netId}")
     @ApiOperation("收藏/喜爱一张关系网")
-    public boolean addCNOne(@PathVariable Integer collectionId, @PathVariable Integer netId) {
+    public CollectionNetwork addCNOne(@PathVariable Integer collectionId, @PathVariable Integer netId) {
         CollectionNetwork collectionNetwork = new CollectionNetwork();
-        //collectionNetwork.setContainsId(containsId);
         collectionNetwork.setCollectionId(collectionId);
         collectionNetwork.setNetId(netId);
-        return collectionNetworkService.saveOrUpdate(collectionNetwork);
+        collectionNetworkService.saveOrUpdate(collectionNetwork);
+        return collectionNetwork;
+    }
+
+    @PostMapping("/add/cn/{netId}/{userId}")
+    @ApiOperation("用户是否收藏/喜爱一张关系网")
+    public List<CollectionNetwork> ifCollected(@PathVariable Integer netId, @PathVariable Integer userId) {
+        return collectionNetworkService.checkIfCollected(netId, userId);
     }
 
 }
