@@ -46,7 +46,7 @@ public class Network {
     private Date createTime;
 
 
-    @TableLogic
+//    @TableLogic
     private Boolean isDelete;
 
     private Integer ext1;

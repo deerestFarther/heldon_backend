@@ -66,7 +66,6 @@ public class NetworkController {
         return networkService.updateById(network);
     }
 
-
     @GetMapping("/getNetworkByNetId/{netId}")
     @ApiOperation("按netId查找关系网")
     public Network getNetworkByNetId(@PathVariable int netId) {
@@ -88,7 +87,5 @@ public class NetworkController {
 //    @ApiOperation("按netId获取关系网详细信息")
 //    public List<Network> getNetworkDetailsByNetId(@PathVariable int netId) {
 //    }
-
-
 }
 
