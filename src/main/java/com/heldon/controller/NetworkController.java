@@ -5,6 +5,7 @@ import com.heldon.DTO.NetworkAdd;
 import com.heldon.DTO.NetworkDTO;
 import com.heldon.DTO.NetworkMsg;
 import com.heldon.entity.Network;
+import com.heldon.entity.UserTag;
 import com.heldon.model.TagAdd;
 import com.heldon.service.TagService;
 import com.heldon.service.impl.NetworkServiceImpl;
@@ -51,6 +52,12 @@ public class NetworkController {
     @DeleteMapping("/deleteNetworkByNetId/{netId}")
     @ApiOperation("按netId删除关系网")
     public Boolean deleteNetworkByNetId(@PathVariable int netId) {
+        // 从标签表逻辑删除掉有关这张关系网的信息
+        Map<String, Object> mapUserTag = new HashMap<>();
+        mapUserTag.put("target_id", netId); // 查到这条待删除的关系网的记录
+        int taggingId = userTagService.listByMap(mapUserTag).get(0).getTaggingId(); // 该记录的主键id
+        userTagService.removeById(taggingId); // 进行逻辑删除
+        // 从关系网表物理删除掉这张关系网
         Map<String, Object> map = new HashMap<>();
         map.put("net_id", netId);
         return networkService.removeByMap(map);
@@ -65,7 +72,6 @@ public class NetworkController {
         network.setExt3(networkMsg.getUrl());
         return networkService.updateById(network);
     }
-
 
     @GetMapping("/getNetworkByNetId/{netId}")
     @ApiOperation("按netId查找关系网")
