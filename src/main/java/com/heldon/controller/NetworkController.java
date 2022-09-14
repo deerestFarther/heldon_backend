@@ -88,7 +88,5 @@ public class NetworkController {
 //    @ApiOperation("按netId获取关系网详细信息")
 //    public List<Network> getNetworkDetailsByNetId(@PathVariable int netId) {
 //    }
-
-
 }
 
